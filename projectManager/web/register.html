@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" href="./static/layui/css/layui.css">
+    <link rel="stylesheet" href="./static/css/register.css">
+</head>
+
+<body>
+<div class="register">
+    <div class="register-box">
+        <h2 style="font-weight:bold;color:rgba(0,0,0,.2);text-align: center;text-shadow: -2px -2px rgba(0,0,0,.6), -1px -1px #fff;">
+            项目管理系统</h2>
+        <form class="layui-form" action="register" lay-filter="register-form-filter">
+            <div class="layui-form-item input-border">
+                <i class="layui-icon layui-icon-username"></i>
+                <input type="text" name="username" required lay-verify="required" placeholder="用户名" autocomplete="off"
+                       class="layui-input login-input-username">
+                <div class="border-box-username">
+                    <div class="border-left"></div>
+                    <div class="border-right"></div>
+                </div>
+            </div>
+            <div class="layui-form-item input-border">
+                <i class="layui-icon layui-icon-password "></i>
+                <input type="password" name="password" required lay-verify="required" placeholder="密码"
+                       autocomplete="off" class="layui-input login-input-password">
+                <div class="border-box-password">
+                    <div class="border-left"></div>
+                    <div class="border-right"></div>
+                </div>
+            </div>
+            <div class="layui-form-item input-border" style="position: relative;">
+                <i class="layui-icon layui-icon-vercode layui-show-md-inline" ></i>
+                <input type="text" name="captcha" required lay-verify="required" placeholder="验证码"
+                       autocomplete="off" class="layui-input login-input-captcha layui-show-md-inline">
+                <canvas width="100" height="40" id="captcha1" style="position: absolute;right: 0;top: -2px;"></canvas>
+                <div class="border-box-captcha">
+                    <div class="border-left"></div>
+                    <div class="border-right"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="register-filter">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="./static/js/util.js"></script>
+<script src="./static/js/jquery-1.11.3.js"></script>
+<script src="./static/layui/layui.all.js"></script>
+<script type="text/javascript" src="./static/js/captcha.js"></script>
+<script>
+    // 加载验证码
+    let captchaNum;
+    let captcha1 = new CaptchaMini({
+        lineWidth: 1, //线条宽度
+        lineNum: 6, //线条数量
+        dotR: 2, //点的半径
+        dotNum: 25, //点的数量
+        preGroundColor: [10, 80], //前景色区间
+        backGroundColor: [220, 230], //背景色区间
+        fontSize: 30,           //字体大小
+        fontFamily: ['Georgia', '微软雅黑', 'Helvetica', 'Arial'], //字体类型
+        fontStyle: 'stroke', //字体绘制方法，有fill和stroke
+        content: 'abcdefghijklmnopqrstuvw0123456789', //验证码内容
+        length: 5 //验证码长度
+    });
+    captcha1.draw(document.querySelector('#captcha1'), r => {
+        captchaNum = r;
+    });
+    //由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+    ;!function () {
+        var layer = layui.layer
+            , form = layui.form;
+
+        //监听注册
+        form.on('submit(register-filter)', function(data){
+            let formData = form.val("register-form-filter");
+            if (formData.captcha !== captchaNum) {
+                layer.alert("验证码错误");
+                return false;
+            }
+        });
+
+        // 监听输入框的聚焦事件
+        $(".login-input-username").focus(function () {
+            $(".border-box-username").css("display", "block");
+        });
+
+        $(".login-input-username").blur(function () {
+            $(".border-box-username").css("display", "none");
+        });
+
+        $(".login-input-password").focus(function () {
+            $(".border-box-password").css("display", "block");
+        });
+
+        $(".login-input-password").blur(function () {
+            $(".border-box-password").css("display", "none");
+        });
+
+        $(".login-input-captcha").focus(function () {
+            $(".border-box-captcha").css("display", "block");
+        });
+
+        $(".login-input-captcha").blur(function () {
+            $(".border-box-captcha").css("display", "none");
+        });
+
+    }();
+
+
+</script>
+</body>
+</html>

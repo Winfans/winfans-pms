@@ -1,0 +1,111 @@
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select {
+    margin: 0;
+    padding: 0
+}
+
+html,body {
+    height: 100%;
+}
+
+body {
+    font-family: "Arial", "tahoma", "宋体", sans-serif;
+    background: #fff;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    color: #2d374b;
+    text-decoration: none
+}
+
+a:hover {
+    color: #cd0200;
+    text-decoration: none;
+}
+
+em {
+    font-style: normal
+}
+
+li {
+    list-style: none
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+p {
+    word-wrap: break-word
+}
+
+/*layui*/
+
+/*复选框*/
+.layui-form-checked[lay-skin="primary"] i {
+    border-color: #009688 !important;
+    background-color: #009688;
+    color: #fff;
+}
+
+/*对话框*/
+.layui-layer-dialog {
+    border-radius: 8px;
+}
+
+.layui-layer-dialog .layui-layer-btn .layui-layer-btn0 {
+    border-color: #009688;
+    background-color: #009688;
+}
+
+/*下拉框*/
+.layui-form-select dl dd.layui-this {
+    background-color: #009688;
+    color: #fff;
+}
+
+/*单选框*/
+.layui-form-radioed > i {
+    color: #009688;
+}
+
+/*开关*/
+.layui-form-onswitch {
+    border-color: #009688;
+    background-color: #009688;
+}
+
+/*多选框*/
+.layui-form-checked span, .layui-form-checked:hover span {
+    background-color: #009688;
+}
+
+.layui-input,
+.layui-select,
+.layui-textarea {
+    border-color: #009688;
+}
+
+.layui-input:hover,
+.layui-select:hover,
+.layui-textarea:hover,
+.layui-input:focus,
+.layui-select:focus,
+.layui-textarea:focus{
+    border-color: #009688!important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 150, 136, 0.6);
+}
+
+.layui-nav,
+.layui-side{
+    background-color: #222d32;
+}
+
+
+

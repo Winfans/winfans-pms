@@ -1,0 +1,49 @@
+/*主区域*/
+.layui-body {
+    top: 51px;
+}
+.layui-body .layui-table-view {
+    margin-top: 0!important;
+}
+
+.layui-layout-body .layui-layout-admin .layui-body #barDemo .search-input {
+    width: 200px;
+}
+
+/*关闭对话框*/
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: #009688;
+    background-color: #009688;
+}
+#edit-team .edit-team-wrappper,
+#add-team .add-team-wrappper,
+#add-user .add-user-wrappper,
+#edit-user .edit-user-wrappper,
+#add-project .add-project-wrappper,
+#edit-project .edit-project-wrappper {
+    width: 95%;
+    margin: 10px auto 0;
+}
+
+#add-user .add-user-wrappper #add-user-head-portrait-upload,
+#edit-user .edit-user-wrappper #edit-head-portrait-upload {
+    position: relative;
+    top: 2px;
+}
+
+#edit-user .edit-user-wrappper #edit-head-portrait-upload {
+    /*display: none;*/
+}
+
+#add-user .add-user-wrappper #add-user-head-portrait,
+#edit-user .edit-user-wrappper #edit-head-portrait {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+#add-user .add-user-wrappper #add-user-head-portrait {
+    display: none;
+}
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" href="./static/layui/css/layui.css">
+    <link rel="stylesheet" href="./static/css/login.css">
+</head>
+
+<body>
+<div class="login">
+    <div class="login-box">
+        <h2 style="font-weight:bold;color:rgba(0,0,0,.2);text-align: center;text-shadow: -2px -2px rgba(0,0,0,.6), -1px -1px #fff;">
+            项目管理系统</h2>
+        <form class="layui-form" action="login">
+            <div class="layui-form-item input-border ">
+                <i class="layui-icon layui-icon-username"></i>
+                <input type="text" name="username" required lay-verify="required" placeholder="用户名" autocomplete="off"
+                       class="layui-input login-input-username">
+                <div class="border-box-username">
+                    <div class="border-left"></div>
+                    <div class="border-right"></div>
+                </div>
+            </div>
+            <div class="layui-form-item input-border">
+                <i class="layui-icon layui-icon-password "></i>
+                <input type="password" name="password" required lay-verify="required" placeholder="密码"
+                       autocomplete="off" class="layui-input login-input-password">
+                <div class="border-box-password">
+                    <div class="border-left"></div>
+                    <div class="border-right"></div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="position: relative;">
+                <input type="checkbox" name="autoLogin" title="自动登录" lay-skin="primary">
+                <div style="display: inline-block;position:absolute;top: 10px;right: 0;line-height: 18px;">
+                    <a href="register.html" style="color: #666;">免费注册</a>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo">登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="./static/js/util.js"></script>
+<script src="./static/js/jquery-1.11.3.js"></script>
+<script src="./static/layui/layui.all.js"></script>
+<script>
+    //由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+    ;!function () {
+        var layer = layui.layer
+            , form = layui.form;
+
+        // 监听输入框的聚焦事件
+        $(".login-input-username").focus(function () {
+            $(".border-box-username").css("display", "block");
+        });
+
+        $(".login-input-username").blur(function () {
+            $(".border-box-username").css("display", "none");
+        });
+
+        $(".login-input-password").focus(function () {
+            $(".border-box-password").css("display", "block");
+        });
+
+        $(".login-input-password").blur(function () {
+            $(".border-box-password").css("display", "none");
+        });
+
+        if (getCookie("AUTOLOGIN") === 'on') {
+            console.log(getCookie("ISADMIN"));
+            if (getCookie("ISADMIN") === "1") {
+                layer.load(1);
+                window.location.href = getRootPath() + "/admin2/index";
+            } else if (getCookie("ISADMIN") === "2") {
+                layer.load(1);
+                window.location.href = getRootPath() + "/user2/findAllProject";
+            }
+        }
+
+        // 判断密码是否错误
+        console.log(document.referrer)
+        if (document.location.href.includes("/index.html?password=error")) {
+            layer.alert("密码错误")
+        }
+    }();
+
+
+</script>
+</body>
+</html>
